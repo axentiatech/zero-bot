@@ -8,6 +8,12 @@ dependencies:
   '@ai-sdk/openai':
     specifier: ^0.0.9
     version: 0.0.9(zod@3.22.4)
+  '@auth/prisma-adapter':
+    specifier: ^2.1.0
+    version: 2.1.0(@prisma/client@5.14.0)
+  '@prisma/client':
+    specifier: ^5.14.0
+    version: 5.14.0(prisma@5.14.0)
   '@radix-ui/react-alert-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
@@ -166,6 +172,9 @@ devDependencies:
   prettier:
     specifier: ^3.2.4
     version: 3.2.4
+  prisma:
+    specifier: ^5.14.0
+    version: 5.14.0
   tailwind-merge:
     specifier: ^2.2.0
     version: 2.2.0
@@ -266,6 +275,42 @@ packages:
       oauth4webapi: 2.7.0
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: false
+
+  /@auth/core@0.31.0:
+    resolution: {integrity: sha512-UKk3psvA1cRbk4/c9CkpWB8mdWrkKvzw0DmEYRsWolUQytQ2cRqx+hYuV6ZCsngw/xbj9hpmkZmAZEyq2g4fMg==}
+    peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.1.1
+      '@types/cookie': 0.6.0
+      cookie: 0.6.0
+      jose: 5.2.0
+      oauth4webapi: 2.7.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: false
+
+  /@auth/prisma-adapter@2.1.0(@prisma/client@5.14.0):
+    resolution: {integrity: sha512-x1gYsi8xCFdxpEM6pxhh7OTV+VHB3PgID2L18y8F1kXu+PbcEWt4VZSQ8zk6dI/4YRStcuwQdHe7neCpczr0mg==}
+    peerDependencies:
+      '@prisma/client': '>=2.26.0 || >=3 || >=4 || >=5'
+    dependencies:
+      '@auth/core': 0.31.0
+      '@prisma/client': 5.14.0(prisma@5.14.0)
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
     dev: false
 
   /@babel/helper-string-parser@7.23.4:
@@ -559,6 +604,46 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@prisma/client@5.14.0(prisma@5.14.0):
+    resolution: {integrity: sha512-akMSuyvLKeoU4LeyBAUdThP/uhVP3GuLygFE3MlYzaCb3/J8SfsYBE5PkaFuLuVpLyA6sFoW+16z/aPhNAESqg==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      prisma: 5.14.0
+    dev: false
+
+  /@prisma/debug@5.14.0:
+    resolution: {integrity: sha512-iq56qBZuFfX3fCxoxT8gBX33lQzomBU0qIUaEj1RebsKVz1ob/BVH1XSBwwwvRVtZEV1b7Fxx2eVu34Ge/mg3w==}
+
+  /@prisma/engines-version@5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48:
+    resolution: {integrity: sha512-ip6pNkRo1UxWv+6toxNcYvItNYaqQjXdFNGJ+Nuk2eYtRoEdoF13wxo7/jsClJFFenMPVNVqXQDV0oveXnR1cA==}
+
+  /@prisma/engines@5.14.0:
+    resolution: {integrity: sha512-lgxkKZ6IEygVcw6IZZUlPIfLQ9hjSYAtHjZ5r64sCLDgVzsPFCi2XBBJgzPMkOQ5RHzUD4E/dVdpn9+ez8tk1A==}
+    requiresBuild: true
+    dependencies:
+      '@prisma/debug': 5.14.0
+      '@prisma/engines-version': 5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+      '@prisma/fetch-engine': 5.14.0
+      '@prisma/get-platform': 5.14.0
+
+  /@prisma/fetch-engine@5.14.0:
+    resolution: {integrity: sha512-VrheA9y9DMURK5vu8OJoOgQpxOhas3qF0IBHJ8G/0X44k82kc8E0w98HCn2nhnbOOMwbWsJWXfLC2/F8n5u0gQ==}
+    dependencies:
+      '@prisma/debug': 5.14.0
+      '@prisma/engines-version': 5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+      '@prisma/get-platform': 5.14.0
+
+  /@prisma/get-platform@5.14.0:
+    resolution: {integrity: sha512-/yAyBvcEjRv41ynZrhdrPtHgk47xLRRq/o5eWGcUpBJ1YrUZTYB8EoPiopnP7iQrMATK8stXQdPOoVlrzuTQZw==}
+    dependencies:
+      '@prisma/debug': 5.14.0
 
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
@@ -1318,6 +1403,10 @@ packages:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.1
     dev: true
+
+  /@types/cookie@0.6.0:
+    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
+    dev: false
 
   /@types/d3-scale@4.0.8:
     resolution: {integrity: sha512-gkK1VVTr5iNiYJ7vWDI+yUFFlszhNMtVeneJ6lUTKPjprsvLLI9/tgEGiXJOnlINJA8FyA88gfnQsHbybVZrYQ==}
@@ -4503,6 +4592,14 @@ packages:
   /pretty-format@3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
+
+  /prisma@5.14.0:
+    resolution: {integrity: sha512-gCNZco7y5XtjrnQYeDJTiVZmT/ncqCr5RY1/Cf8X2wgLRmyh9ayPAGBNziI4qEE4S6SxCH5omQLVo9lmURaJ/Q==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 5.14.0
 
   /prismjs@1.27.0:
     resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}

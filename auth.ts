@@ -4,10 +4,20 @@ import { authConfig } from './auth.config'
 import { z } from 'zod'
 import { getStringFromBuffer } from './lib/utils'
 import { getUser } from './app/login/actions'
+import GoogleProvider from 'next-auth/providers/google'
+import AppleProvider from 'next-auth/providers/apple'
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+    }),
+    AppleProvider({
+      clientId: process.env.APPLE_CLIENT_ID!,
+      clientSecret: process.env.APPLE_CLIENT_SECRET!
+    }),
     Credentials({
       async authorize(credentials) {
         const parsedCredentials = z

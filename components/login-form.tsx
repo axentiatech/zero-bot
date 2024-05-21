@@ -9,6 +9,8 @@ import { IconSpinner } from './ui/icons'
 import { getMessageFromCode } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { signIn } from '@/auth'
+import { OauthAction } from '@/actions/auth/oauth.action'
 
 export default function LoginForm() {
   const router = useRouter()
@@ -25,6 +27,10 @@ export default function LoginForm() {
     }
   }, [result, router])
 
+  const handleSignIn = async (type: "Google" | "Apple") => {
+    await OauthAction(type)
+  }
+
   return (
     <form
       action={dispatch}
@@ -33,12 +39,12 @@ export default function LoginForm() {
       <div className="w-full flex-1 flex flex-col gap-6 items-center rounded-lg border bg-white px-6 py-8 shadow-md  md:w-96 dark:bg-zinc-950">
 
         <h1 className='text-xl'>Login to Zero AI</h1>
-        <div className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
+        <button onClick={() => handleSignIn("Google")} className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
           <Image src='/google-logo.png' alt='google' width={20} height={20} />
-          Continue with Google</div>
-        <div className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
+          Continue with Google</button>
+        <button onClick={() => handleSignIn("Apple")} className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
           <Image src='/apple-logo.png' alt='google' width={20} height={20} />
-          Continue with Apple</div>
+          Continue with Apple</button>
         {/* <h1 className="mb-3 text-2xl font-bold">Please log in to continue.</h1>
         <div className="w-full">
           <div>
