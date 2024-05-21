@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import { IconSpinner } from './ui/icons'
 import { getMessageFromCode } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 export default function LoginForm() {
   const router = useRouter()
@@ -29,8 +30,16 @@ export default function LoginForm() {
       action={dispatch}
       className="flex flex-col items-center gap-4 space-y-3"
     >
-      <div className="w-full flex-1 rounded-lg border bg-white px-6 pb-4 pt-8 shadow-md  md:w-96 dark:bg-zinc-950">
-        <h1 className="mb-3 text-2xl font-bold">Please log in to continue.</h1>
+      <div className="w-full flex-1 flex flex-col gap-6 items-center rounded-lg border bg-white px-6 py-8 shadow-md  md:w-96 dark:bg-zinc-950">
+
+        <h1 className='text-xl'>Login to Zero AI</h1>
+        <div className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
+          <Image src='/google-logo.png' alt='google' width={20} height={20} />
+          Continue with Google</div>
+        <div className='p-2 flex gap-2 items-center justify-center rounded-full border w-[14rem]'>
+          <Image src='/apple-logo.png' alt='google' width={20} height={20} />
+          Continue with Apple</div>
+        {/* <h1 className="mb-3 text-2xl font-bold">Please log in to continue.</h1>
         <div className="w-full">
           <div>
             <label
@@ -70,7 +79,7 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <LoginButton />
+        <LoginButton /> */}
       </div>
 
       <Link
@@ -79,7 +88,7 @@ export default function LoginForm() {
       >
         No account yet? <div className="font-semibold underline">Sign up</div>
       </Link>
-    </form>
+    </form >
   )
 }
 
